@@ -30,6 +30,7 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
         target_sheet = target_wb.create_sheet(title=new_sheet_name)
 
 # 复制并修改数据
+    index_xh = 1
     for row_idx, row in enumerate(source_sheet.iter_rows(values_only=True), start=1):
         if row_idx == 1:
             # 处理标题行
@@ -42,14 +43,14 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
             except ValueError:
                 SUM_IJ = None
                 continue
-            if "含" in row[17]:  #备注软件名称
-                index1 = row[17].find("含")
+            if "含" in row[17]:   #改动 备注软件名称
+                index1 = row[17].find("含")  # 找到转账备注中的 含：恒达富士乘客电梯变频控制软件V1.0的数据
                 bzrjmc = row[17][index1:]
                 row6index = second_star_index(row[6])   # 货物名称 中第二个星号的index
                 new_6row = row[6][row6index+1:]
             # 开始写 new row
                 new_row = [
-                    row_idx - 1, 
+                    index_xh, 
                     0,
                     row[5], 
                     row[2], 
@@ -61,6 +62,7 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
                     row[11], 
                     SUM_IJ
                 ]
+                index_xh += 1
                 target_sheet.append(new_row)
 
     target_wb.save(target_file)
