@@ -29,6 +29,8 @@ def copy_and_modify_excel_data(source_file, target_file, new_sheet_name):
         else:
             SUM_IJ = row[8] + row[10] if isinstance(row[9], (int, float)) and isinstance(row[11], (int, float)) else None
             # 处理数据行
+            if row_idx < 20:
+                print(row_idx)
             new_row = [
                 row_idx - 1, 
                 0,
