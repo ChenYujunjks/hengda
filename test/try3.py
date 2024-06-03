@@ -2,7 +2,7 @@ import openpyxl
 
 source_file = 'source.xlsx'
 target_file = 'target.xlsx'
-new_sheet_name = 'try2'
+new_sheet_name = 'try3'
 
 def modify_excel_data(source_file, target_file, new_sheet_name):
     
@@ -33,24 +33,22 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
             except ValueError:
                 SUM_IJ = None
                 continue
-
-            if row_idx < 10:
-                print(SUM_IJ)
-            new_row = [
-                row_idx - 1, 
-                0,
-                row[5], 
-                row[2], 
-                row[4], 
-                row[6], 
-                row[17], 
-                1,
-                row[9], 
-                row[11], 
-                SUM_IJ
-            ]
-        target_sheet.append(new_row)
-
+            if "含" in row[17]:
+                new_row = [
+                    row_idx - 1, 
+                    0,
+                    row[5], 
+                    row[2], 
+                    row[4], 
+                    row[6], 
+                    row[17], 
+                    1,
+                    row[9], 
+                    row[11], 
+                    SUM_IJ
+                ]
+                target_sheet.append(new_row)
+            
     target_wb.save(target_file)
 
 modify_excel_data(source_file, target_file, new_sheet_name)
