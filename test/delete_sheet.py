@@ -10,6 +10,6 @@ if 'try3' in wb.sheetnames:
     wb.remove(ws)
     # 保存更改
     wb.save('target.xlsx')
-    print("工作表 'try2' 已被删除。")
+    print("工作表 'try3' 已被删除。")
 else:
-    print("工作表 'try2' 不存在。")
+    print("工作表 'try3' 不存在。")
