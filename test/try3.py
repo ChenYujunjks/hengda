@@ -26,6 +26,7 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
         if row_idx == 1:
             # 处理标题行
             new_row = ["序号", "生产编号", row[5], row[2], "客户名称", "货物名称", "备注软件名称","数量", "不含税金额","税额", "合计"]
+            target_sheet.append(new_row)
         else:
             # 处理数据行
             try:
@@ -48,7 +49,7 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
                     SUM_IJ
                 ]
                 target_sheet.append(new_row)
-            
+
     target_wb.save(target_file)
 
 modify_excel_data(source_file, target_file, new_sheet_name)
