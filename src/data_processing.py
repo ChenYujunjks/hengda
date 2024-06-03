@@ -7,6 +7,7 @@ def second_star_index(text):
     return second_star_index
 
 def process_data(source_sheet, target_sheet):
+    index_xh = 1
     for row_idx, row in enumerate(source_sheet.iter_rows(values_only=True), start=1):
         if row_idx == 1:
             # 处理标题行
@@ -26,7 +27,7 @@ def process_data(source_sheet, target_sheet):
                 new_6row = row[6][row6index + 1:]
                 # 开始写 new row
                 new_row = [
-                    row_idx - 1, 
+                    index_xh, 
                     0,
                     row[5], 
                     row[2], 
@@ -38,4 +39,5 @@ def process_data(source_sheet, target_sheet):
                     row[11], 
                     SUM_IJ
                 ]
+                index_xh += 1
                 target_sheet.append(new_row)
