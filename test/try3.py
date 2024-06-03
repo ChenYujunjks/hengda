@@ -35,6 +35,8 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
                 SUM_IJ = None
                 continue
             if "含" in row[17]:
+                index1 = row[17].find("含")
+                bzrjmc = row[17][index1:]
                 new_row = [
                     row_idx - 1, 
                     0,
@@ -42,7 +44,7 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
                     row[2], 
                     row[4], 
                     row[6], 
-                    row[17], 
+                    bzrjmc, 
                     1,
                     row[9], 
                     row[11], 
