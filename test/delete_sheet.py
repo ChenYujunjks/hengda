@@ -4,9 +4,9 @@ import openpyxl
 wb = openpyxl.load_workbook('target.xlsx')
 
 # 检查工作表是否存在
-if 'try3' in wb.sheetnames:
+if 'try4' in wb.sheetnames:
     # 删除工作表
-    ws = wb['try3']
+    ws = wb['try4']
     wb.remove(ws)
     # 保存更改
     wb.save('target.xlsx')

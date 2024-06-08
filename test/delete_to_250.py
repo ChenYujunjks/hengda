@@ -2,7 +2,7 @@ import openpyxl
 
 source_file = 'input_source.xlsx'
 output_file = 'source.xlsx'
-max_rows = 600
+max_rows = 250
 
 def export_top_rows(source_file, output_file, max_rows):
     # 打开源文件
