@@ -1,7 +1,7 @@
 import openpyxl
 
 source_file = 'source.xlsx'
-shengchan_file = "help.xlsx"
+shengchan_file = 'help.xlsx'
 target_file = 'target.xlsx'
 new_sheet_name = 'try4'
 
@@ -14,11 +14,13 @@ def second_star_index(text):
     return second_star_index
 
 def get_scbh_from_shengchan(shengchan_file, fphm): #获取生产编号
+    print(f"Reading {shengchan_file} to find SCBH for FPHM: {fphm}")
     shengchan_wb = openpyxl.load_workbook(shengchan_file)
     shengchan_sheet = shengchan_wb.active  # 假设生产文件中的数据在第一个工作表
     
     for row in shengchan_sheet.iter_rows(min_row=2, values_only=True):  # 假设第1行为标题行，从第2行开始
         if row[4] == fphm:  # E列是第五列（索引从0开始）
+            print(f"Found SCBH: {row[1]} for FPHM: {fphm}")
             return row[1]  # B列是第二列（索引从0开始）
     return None
 
@@ -58,12 +60,16 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
                 bzrjmc = row[26][index1:]  
                 row6index = second_star_index(row[11])   # 货物名称 中第二个星号的index
                 hwmc = row[11][row6index+1:]
+
+                 # 获取发票号码对应的生产编号
+                fphm = row[3]  # 假设发票号码在第四列
+                scbh = get_scbh_from_shengchan(shengchan_file, fphm)
             # 开始写 new row
                 new_row = [
                     index_xh, 
-                    0,
+                    scbh if scbh else 0,  # 如果找不到生产编号，则填0,
                     row[8],  # 开票日期
-                    row[3],  # 发票号码
+                    fphm,  # 发票号码
                     row[7],   # 客户名称
                     hwmc,  # 货物名称 中第二个星号的index
                     bzrjmc, # 备注软件名称
