@@ -46,7 +46,7 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
     for row_idx, row in enumerate(source_sheet.iter_rows(values_only=True), start=1):
         if row_idx == 1:
             # 处理标题行
-            new_row = ["序号", "生产编号", "开票日期", "发票号码", "客户名称", "货物名称", "备注软件名称", "数量", "不含税金额","税额", "合计", "硬件成本"]
+            new_row = ["序号", "生产编号", "开票日期", "发票号码", "客户名称", "货物名称", "备注软件名称", "数量", "不含税金额", "税额", "合计", "硬件成本"]
             target_sheet.append(new_row)
         else:
             # 数据行 条件筛选
