@@ -2,7 +2,6 @@ import openpyxl
 from openpyxl.styles import PatternFill
 from collections import defaultdict
 
-# 打开两个Excel文件
 wb_hand = openpyxl.load_workbook('../hand.xlsx')
 wb_target = openpyxl.load_workbook('../target.xlsx')
 
