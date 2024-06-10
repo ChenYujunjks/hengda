@@ -1,5 +1,6 @@
 import openpyxl
 from openpyxl.styles import PatternFill
+from func import compute_sum_diff
 
 # 打开两个Excel文件
 wb_hand = openpyxl.load_workbook('hand.xlsx')
@@ -47,7 +48,10 @@ for value_hand, row_hand in data_hand.items():
                 output_col += 1
         output_row += 1
 
-# 保存输出文件
-wb_output.save('output3.xlsx')
+
+
+compute_sum_diff(sheet_output, blue_fill, orange_fill, 9, output_row)
+
+wb_output.save('output4.xlsx')
 
 print("Comparison completed. Results saved in 'output3.xlsx'.")
