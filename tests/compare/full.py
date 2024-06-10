@@ -2,8 +2,8 @@ import openpyxl
 from openpyxl.styles import PatternFill
 from collections import defaultdict
 
-wb_hand = openpyxl.load_workbook('../hand.xlsx')
-wb_target = openpyxl.load_workbook('../target.xlsx')
+wb_hand = openpyxl.load_workbook('tests/hand.xlsx')
+wb_target = openpyxl.load_workbook('tests/target.xlsx')
 
 # 选择工作表
 sheet_hand = wb_hand.worksheets[0]  # 第一个工作表
@@ -87,6 +87,6 @@ for row_data in zero_diff_rows:
     output_row += 1
 
 # 保存输出文件
-wb_output.save('output_comparison.xlsx')
+wb_output.save('tests/compare/output_comparison.xlsx')
 
 print("Comparison completed. Results saved in 'output_comparison.xlsx'.")
