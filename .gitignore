@@ -1,3 +1,7 @@
 origin_file
 .DS_Store
-5月_eg
+# 忽略所有文件夹中的所有 .xlsx 文件
+*.xlsx
+
+# 取消忽略 eg 文件夹中的 .xlsx 文件
+!eg/*.xlsx
