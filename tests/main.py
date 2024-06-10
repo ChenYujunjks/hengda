@@ -3,7 +3,7 @@ import openpyxl
 source_file = 'input_source.xlsx'
 shengchan_file = 'help.xlsx'
 target_file = 'target.xlsx'
-new_sheet_name = 'try4'
+new_sheet_name = 'default'
 
 def second_star_index(text):
     first_star_index = text.find('*')
@@ -25,10 +25,15 @@ def get_scbh_from_shengchan(shengchan_file, fphm): #获取生产编号
     return None
 
 def modify_excel_data(source_file, target_file, new_sheet_name):
-    
-    source_wb = openpyxl.load_workbook(source_file)
-    source_sheet = source_wb.active  # 假设源文件中需要复制的数据在第一个工作表
-
+    try:
+        source_wb = openpyxl.load_workbook(source_file)
+        source_sheet = source_wb.active  # 假设源文件中需要复制的数据在第一个工作表
+    except FileNotFoundError as e:
+        print(f"文件不存在或者路径错误===>:\n {e}")
+        return
+    except Exception as e:
+        print(f"An unexpected error occurred while loading the source file: {e}")
+        return
     # 打开目标文件（如果不存在则创建一个新的文件）
     try:
         target_wb = openpyxl.load_workbook(target_file)
@@ -83,4 +88,5 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
 
     target_wb.save(target_file)
 
-modify_excel_data(source_file, target_file, new_sheet_name)
+if __name__ == "__main__":
+    modify_excel_data(source_file, target_file, new_sheet_name)

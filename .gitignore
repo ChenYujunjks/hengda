@@ -5,3 +5,5 @@ origin_file
 
 # 取消忽略 eg 文件夹中的 .xlsx 文件
 !eg/*.xlsx
+
+__pycache__
