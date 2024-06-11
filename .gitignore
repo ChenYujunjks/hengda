@@ -7,3 +7,4 @@ origin_file
 !eg/*.xlsx
 
 __pycache__
+cost_compare
