@@ -43,7 +43,7 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
             except ValueError:
                 SUM_IJ = None
                 continue
-            if "含" in row[26] and "%" in row[26]:  # Modify remark software name
+            if row[26] is not None and isinstance(row[26], str) and "含" in row[26] and "%" in row[26]:  # Modify remark software name
                 index1 = row[26].find("含")  # Find the "含" in the remark
                 bzrjmc = row[26][index1:]  
                 row6index = second_star_index(row[11])   # Second star index in product name

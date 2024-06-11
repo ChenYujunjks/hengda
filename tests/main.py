@@ -1,8 +1,8 @@
 import openpyxl
 
-source_file = 'tests/input_source.xlsx'
-shengchan_file = 'tests/help.xlsx'
-target_file = 'tests/target.xlsx'
+source_file = 'apr/input_source.xlsx'
+shengchan_file = 'apr/help.xlsx'
+target_file = 'apr/target.xlsx'
 new_sheet_name = 'default'
 
 def second_star_index(text):
@@ -60,7 +60,7 @@ def modify_excel_data(source_file, target_file, new_sheet_name):
             except ValueError:
                 SUM_IJ = None
                 continue
-            if "含" in row[26]:   #改动 备注软件名称
+            if row[26] is not None and isinstance(row[26], str) and "含" in row[26]:  # Modify remark software name   #改动 备注软件名称
                 index1 = row[26].find("含")  # 找到转账备注中的 含：恒达富士乘客电梯变频控制软件V1.0的数据
                 bzrjmc = row[26][index1:]  
                 row6index = second_star_index(row[11])   # 货物名称 中第二个星号的index
